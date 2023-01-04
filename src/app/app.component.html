@@ -3,7 +3,6 @@
 
 <div class="main-container">
 
-
   <div class="match-section">
     <p class="player-header">Billiard</p>
     <div 
@@ -12,8 +11,8 @@
       [ngClass]="{'same-match': match.sameMatch}" 
       [id]="'billiard-match-' + match.match_id"
     >
-      <p>{{ match.hero_id | hero:heroes }}</p>
-      <p >{{ match.start_time * 1000 | date: 'MMM d, y - h:mm a' }}</p>
+      <p class="hero-id">{{ match.hero_id | hero:heroes }}</p>
+      <p class="match-start-time">{{ match.start_time * 1000 | date: 'MMM d, y - h:mm a' }}</p>
 
     </div>
   </div>
@@ -26,8 +25,8 @@
       [ngClass]="{'same-match': match.sameMatch}" 
       [id]="'samsclub-match-' + match.match_id"
     >
-      <p>{{ match.hero_id | hero:heroes }}</p>
-      <p >{{ match.start_time * 1000 | date:'MMM d, y - h:mm a'}}</p>
+      <p class="hero-id">{{ match.hero_id | hero:heroes }}</p>
+      <p class="match-start-time">{{ match.start_time * 1000 | date:'MMM d, y - h:mm a'}}</p>
 
     </div>
   </div>
