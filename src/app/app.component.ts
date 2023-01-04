@@ -69,7 +69,7 @@ export class AppComponent implements OnInit {
   }
 
   handleScrollToBottom() {
-    window.scrollTo({top: 150 * this.billiardMatchesToDisplay.length, behavior: 'smooth'});
+    window.scrollTo({top: 250 * this.billiardMatchesToDisplay.length, behavior: 'smooth'});
   }
   handleScrollToTop() {
     window.scrollTo({top: 0, behavior: 'smooth'});
