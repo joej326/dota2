@@ -1,6 +1,4 @@
-
-
-.toggle-btn {
+.btn {
     border-radius: 10px;
     background-color: lighten($color: lightblue, $amount: 7);
     padding: 10px 16px;
@@ -17,7 +15,22 @@
     &:hover {
         cursor: pointer;
     }
+
+    &.back-to-top {
+        position: sticky;
+        left: 50vw;
+        bottom: 10px;
+        transform: translateX(-50%);
+        opacity: 0.8;
+    }
 }
+
+.btn-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 
 .main-container {
     display: flex;

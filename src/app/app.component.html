@@ -1,5 +1,9 @@
 
-<button (click)="handleSameMatchesToggle()" class="toggle-btn" [class.on]="isSameMatchToggleOn">Toggle same matches</button>
+<div class="btn-container">
+  <button (click)="handleSameMatchesToggle()" class="toggle-btn btn" [class.on]="isSameMatchToggleOn">Toggle Matches Played Together</button>
+  <button (click)="handleScrollToBottom()" class="btn">Scroll to bottom</button>
+</div>
+
 
 <div class="main-container">
 
@@ -13,6 +17,7 @@
     <app-match-containers [matches]="samsclubMatchesToDisplay" [heroes]="heroes" [playerName]="'samsclub'"></app-match-containers>
   </div>
 </div>
+<button *ngIf="shouldShowBackToTopButton" (click)="handleScrollToTop()" class="back-to-top btn">Back to top</button>
 
 
 

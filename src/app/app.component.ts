@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { mergeMap } from 'rxjs';
 import { ApiService } from './services/api.service';
 
@@ -16,6 +16,7 @@ export class AppComponent implements OnInit {
   samsclubMatchesToDisplay: any[] = [];
 
   isSameMatchToggleOn: boolean = false;
+  shouldShowBackToTopButton: boolean = false;
 
 
 
@@ -27,7 +28,6 @@ export class AppComponent implements OnInit {
     this.apiService.getHeroes().subscribe({
       next: (data: any) => {
         this.heroes = data;
-        console.log('heroes:', this.heroes);
       }
     });
     this.apiService.getPlayerRecentMatches(121010326).pipe(mergeMap((data: any) => {
@@ -46,6 +46,11 @@ export class AppComponent implements OnInit {
         });
         this.billiardMatchesToDisplay = [...this.billiardMatches];
         this.samsclubMatchesToDisplay = [...this.samsclubMatches];
+
+        document.addEventListener('scroll', () => {
+          window.scrollY >= 1200 ? this.shouldShowBackToTopButton = true : this.shouldShowBackToTopButton = false;
+        })
+
       }
     });
   }
@@ -62,5 +67,12 @@ export class AppComponent implements OnInit {
     }
     
 
+  }
+
+  handleScrollToBottom() {
+    window.scrollTo({top: 150 * this.billiardMatchesToDisplay.length, behavior: 'smooth'});
+  }
+  handleScrollToTop() {
+    window.scrollTo({top: 0, behavior: 'smooth'});
   }
 }
