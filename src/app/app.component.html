@@ -1,6 +1,6 @@
 
 <div class="btn-container">
-  <button (click)="handleSameMatchesToggle()" class="toggle-btn btn" [class.on]="isSameMatchToggleOn">Toggle Matches Played Together</button>
+  <button (click)="handleSameMatchesToggle()" class="toggle-btn btn" [class.on]="isSameMatchToggleOn">Played Together</button>
   <button (click)="handleScrollToBottom()" class="btn">Scroll to bottom</button>
 </div>
 
@@ -9,12 +9,20 @@
 
   <div class="match-section">
     <p class="player-header">Billiard</p>
-    <app-match-containers [matches]="billiardMatchesToDisplay" [heroes]="heroes" [playerName]="'billiard'"></app-match-containers>
+    <app-match-containers 
+      (onMatchClick$)="onMatchClick($event)"
+      [matches]="billiardMatchesToDisplay" 
+      [heroes]="heroes" 
+      [playerName]="'billiard'"></app-match-containers>
   </div>
   
   <div class="match-section">
     <p class="player-header">Samsclub</p>
-    <app-match-containers [matches]="samsclubMatchesToDisplay" [heroes]="heroes" [playerName]="'samsclub'"></app-match-containers>
+    <app-match-containers 
+      (onMatchClick$)="onMatchClick($event)"
+      [matches]="samsclubMatchesToDisplay" 
+      [heroes]="heroes" 
+      [playerName]="'samsclub'"></app-match-containers>
   </div>
 </div>
 <button *ngIf="shouldShowBackToTopButton" (click)="handleScrollToTop()" class="back-to-top btn">Back to top</button>

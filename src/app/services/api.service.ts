@@ -30,8 +30,8 @@ export class ApiService {
     return this.http.get(`https://api.opendota.com/api/heroes`);
   }
   
-  getMatch() {
-    return this.http.get(`https://api.opendota.com/api/matches/6933532847?api_key=${apiKey}`);
+  getMatch(matchId: string) {
+    return this.http.get(`https://api.opendota.com/api/matches/${matchId}?api_key=${apiKey}`);
   }
 
   getPlayerRecentMatches(dotaAccountId: number) {

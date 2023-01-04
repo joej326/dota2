@@ -65,8 +65,6 @@ export class AppComponent implements OnInit {
       this.billiardMatchesToDisplay = [...this.billiardMatches.filter(match => match['sameMatch'])];
       this.samsclubMatchesToDisplay = [...this.samsclubMatches.filter(match => match['sameMatch'])];
     }
-    
-
   }
 
   handleScrollToBottom() {
@@ -74,5 +72,17 @@ export class AppComponent implements OnInit {
   }
   handleScrollToTop() {
     window.scrollTo({top: 0, behavior: 'smooth'});
+  }
+
+
+  onMatchClick(matchId: string) {
+    this.apiService.getMatch(matchId).subscribe({
+      next: (data: any) => {
+        console.log(data);
+        if (data.replay_url) {
+          window.open(data.replay_url, '_blank');
+        }
+      }
+    });
   }
 }

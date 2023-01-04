@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-match-containers',
@@ -9,5 +9,11 @@ export class MatchContainersComponent {
   @Input() matches: any[] = [];
   @Input() playerName: string = '';
   @Input() heroes: any[] = [];
+
+  @Output() onMatchClick$ = new EventEmitter<string>();
+
+  onMatchClick(matchId: string) {
+    this.onMatchClick$.emit(matchId);
+  }
 
 }
