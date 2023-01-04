@@ -5,11 +5,11 @@
     justify-content: center;
     border: solid black 1px;
     border-radius: 10px;
-    width: 26vmin;
-    height: 100px;
-    /* max-height: 24vmin; */
+    width: 41vmin;
+    height: 135px;
     margin: 20px;
     padding: 10px;
+    box-sizing: border-box;
 
     p {
         margin: 0;
@@ -21,6 +21,13 @@
         }
         &.match-start-time {
             font-size: 16px;
+        }
+        &.duration {
+            font-size: 16px;
+            border-top-width: 1px;
+            border-top-style: solid;
+            margin: 5px 20px 0 20px;
+            padding-top: 5px;
         }
     }
 

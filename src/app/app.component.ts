@@ -35,6 +35,7 @@ export class AppComponent implements OnInit {
       return this.apiService.getPlayerRecentMatches(112553511);
     })).subscribe({
       next: (data: any) => {
+        console.log(data);
         this.samsclubMatches = data;
 
         this.billiardMatches.forEach(billMatch => {

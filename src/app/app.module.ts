@@ -5,12 +5,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { HeroPipe } from './pipes/hero.pipe';
 import { MatchContainersComponent } from './components/match-containers/match-containers.component';
+import { DurationPipe } from './pipes/duration.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeroPipe,
-    MatchContainersComponent
+    MatchContainersComponent,
+    DurationPipe
   ],
   imports: [
     BrowserModule,
