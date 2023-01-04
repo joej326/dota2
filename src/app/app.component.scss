@@ -1,0 +1,57 @@
+
+
+.toggle-btn {
+    border-radius: 10px;
+    background-color: lighten($color: lightblue, $amount: 7);
+    padding: 10px 16px;
+    font-size: 13px;
+    margin: 15px auto 0 auto;
+    display: block;
+    transition: all 0.5s;
+
+    &.on {
+        background-color: green;
+        color: white;
+    }
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.main-container {
+    display: flex;
+    justify-content: space-around;
+
+    
+
+    .match-section {
+        text-align: center;
+
+        .player-header {
+            font-size: 25px;
+            font-weight: 700;
+            text-decoration: underline;
+        }
+
+        .match-container {
+            border: solid black 1px;
+            border-radius: 10px;
+            width: 26vmin;
+            height: 100px;
+            /* max-height: 24vmin; */
+            margin: 20px;
+            padding: 10px;
+
+            &.same-match {
+                background: green;
+                color: white;
+            }
+        
+            p {
+
+            }
+        }
+    }
+}
+
