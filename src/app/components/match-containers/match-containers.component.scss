@@ -1,0 +1,35 @@
+
+.match-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: solid black 1px;
+    border-radius: 10px;
+    width: 26vmin;
+    height: 100px;
+    /* max-height: 24vmin; */
+    margin: 20px;
+    padding: 10px;
+
+    p {
+        margin: 0;
+
+        &.hero-id {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        &.match-start-time {
+            font-size: 16px;
+        }
+    }
+
+    &.same-match {
+        background: green;
+        color: white;
+    }
+
+    p {
+
+    }
+}

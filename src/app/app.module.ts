@@ -4,11 +4,13 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { HeroPipe } from './pipes/hero.pipe';
+import { MatchContainersComponent } from './components/match-containers/match-containers.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeroPipe
+    HeroPipe,
+    MatchContainersComponent
   ],
   imports: [
     BrowserModule,

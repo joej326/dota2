@@ -55,7 +55,7 @@ export class AppComponent implements OnInit {
       this.isSameMatchToggleOn = false;
       this.billiardMatchesToDisplay = [...this.billiardMatches];
       this.samsclubMatchesToDisplay = [...this.samsclubMatches];
-    } else {
+    } else if (!this.isSameMatchToggleOn) {
       this.isSameMatchToggleOn = true;
       this.billiardMatchesToDisplay = [...this.billiardMatches.filter(match => match['sameMatch'])];
       this.samsclubMatchesToDisplay = [...this.samsclubMatches.filter(match => match['sameMatch'])];

@@ -5,30 +5,12 @@
 
   <div class="match-section">
     <p class="player-header">Billiard</p>
-    <div 
-      *ngFor="let match of billiardMatchesToDisplay" 
-      class="match-container {{ match.match_id }}" 
-      [ngClass]="{'same-match': match.sameMatch}" 
-      [id]="'billiard-match-' + match.match_id"
-    >
-      <p class="hero-id">{{ match.hero_id | hero:heroes }}</p>
-      <p class="match-start-time">{{ match.start_time * 1000 | date: 'MMM d, y - h:mm a' }}</p>
-
-    </div>
+    <app-match-containers [matches]="billiardMatchesToDisplay" [heroes]="heroes" [playerName]="'billiard'"></app-match-containers>
   </div>
   
   <div class="match-section">
     <p class="player-header">Samsclub</p>
-    <div 
-      *ngFor="let match of samsclubMatchesToDisplay" 
-      class="match-container {{ match.match_id }}"  
-      [ngClass]="{'same-match': match.sameMatch}" 
-      [id]="'samsclub-match-' + match.match_id"
-    >
-      <p class="hero-id">{{ match.hero_id | hero:heroes }}</p>
-      <p class="match-start-time">{{ match.start_time * 1000 | date:'MMM d, y - h:mm a'}}</p>
-
-    </div>
+    <app-match-containers [matches]="samsclubMatchesToDisplay" [heroes]="heroes" [playerName]="'samsclub'"></app-match-containers>
   </div>
 </div>
 
