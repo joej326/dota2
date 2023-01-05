@@ -24,19 +24,20 @@ import { apiKey } from '../../../.config';
 })
 export class ApiService {
 
-  constructor(private http: HttpClient) { }
 
-  getHeroes() {
-    return this.http.get(`https://api.opendota.com/api/heroes`);
-  }
-  
-  getMatch(matchId: string) {
-    return this.http.get(`https://api.opendota.com/api/matches/${matchId}?api_key=${apiKey}`);
-  }
+    constructor(private http: HttpClient) { }
 
-  getPlayerRecentMatches(dotaAccountId: number) {
-    return this.http.get(`https://api.opendota.com/api/players/${dotaAccountId}/matches`);
-  }
+    getHeroes() {
+        return this.http.get(`https://api.opendota.com/api/heroes`);
+    }
 
-  
+    getMatch(matchId: string) {
+        return this.http.get(`https://api.opendota.com/api/matches/${matchId}?api_key=${apiKey}`);
+    }
+
+    getPlayerRecentMatches(dotaAccountId: number) {
+        return this.http.get(`https://api.opendota.com/api/players/${dotaAccountId}/matches`);
+    }
+
+
 }

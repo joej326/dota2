@@ -1,20 +1,14 @@
+@import '../../mixins/button.scss';
+
 .btn {
-    border-radius: 10px;
-    background-color: lighten($color: lightblue, $amount: 7);
-    padding: 10px 16px;
-    font-size: 13px;
-    margin: 15px 10px 0 10px;
-    display: block;
-    transition: all 0.5s;
+    @include button;
 
     &.on {
         background-color: green;
         color: white;
     }
 
-    &:hover {
-        cursor: pointer;
-    }
+    
 
     &.back-to-top {
         position: sticky;

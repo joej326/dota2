@@ -12,24 +12,33 @@ export class MatchDetailsComponent implements OnInit {
   replayUrl: string = '';
   isWin: boolean | unknown;
   player: string = '';
+  matchPlayerData: any;
+  matchData: any;
+  heroId: number;
+  heroes: any;
 
   constructor(private api: ApiService, private route: ActivatedRoute) { }
 
 
   ngOnInit(): void {
+    this.heroes = JSON.parse(localStorage.getItem('heroes') as any);
+
     const matchId: string = this.route.snapshot.params['matchId'];
-    const heroId = Number(this.route.snapshot.params['heroId']);
+    this.heroId = Number(this.route.snapshot.params['heroId']);
     this.player = this.route.snapshot.params['player'];
+    
 
 
     this.api.getMatch(matchId).subscribe({
       next: (data: any) => {
         console.log(data);
+        this.matchData = data;
         if (data.replay_url) {
           this.replayUrl = data.replay_url;
         }
+        this.matchPlayerData = data.players.find((player: any) => player.hero_id === this.heroId);
 
-        this.isWin = !!(data.players.find((player: any) => player.hero_id === heroId)['win']);
+        this.isWin = !!(this.matchPlayerData['win']);
       }
     });
   }

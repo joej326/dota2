@@ -30,6 +30,7 @@ export class MainComponent implements OnInit {
     this.apiService.getHeroes().subscribe({
       next: (data: any) => {
         this.heroes = data;
+        localStorage.setItem('heroes', JSON.stringify(this.heroes as any));
       }
     });
     this.apiService.getPlayerRecentMatches(121010326).pipe(mergeMap((data: any) => {

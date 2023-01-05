@@ -1,4 +1,16 @@
 
-<h1>{{ player }}</h1>
+<div class="main-container">
+    <h1>{{ player }}</h1>
 
-<p>{{ isWin === true ? 'WIN' : isWin === false ? 'LOSE' : '' }}</p>
+    <h2>{{ heroId | hero:heroes }}</h2>
+
+    <p 
+        [ngClass]="{'won': isWin, 'lost': !isWin}">
+    {{ isWin === true ? 'WON' : isWin === false ? 'LOST' : '' }}</p>
+    <p>KDA: {{matchPlayerData?.kills }}/{{ matchPlayerData?.deaths }}/{{ matchPlayerData?.assists }}</p>
+    <p>KDA ratio: {{ matchPlayerData?.kda }}</p>
+    <a *ngIf="matchData?.replay_url" [href]="matchData.replay_url" target="_blank">
+        <button>Download Replay</button>
+    </a>
+</div>
+
