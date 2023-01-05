@@ -1,0 +1,50 @@
+.btn {
+    border-radius: 10px;
+    background-color: lighten($color: lightblue, $amount: 7);
+    padding: 10px 16px;
+    font-size: 13px;
+    margin: 15px 10px 0 10px;
+    display: block;
+    transition: all 0.5s;
+
+    &.on {
+        background-color: green;
+        color: white;
+    }
+
+    &:hover {
+        cursor: pointer;
+    }
+
+    &.back-to-top {
+        position: sticky;
+        left: 50vw;
+        bottom: 10px;
+        transform: translateX(-50%);
+        opacity: 0.8;
+    }
+}
+
+.btn-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.main-container {
+    display: flex;
+    justify-content: space-around;
+
+    
+    .match-section {
+        text-align: center;
+
+        .player-header {
+            font-size: 25px;
+            font-weight: 700;
+            text-decoration: underline;
+        }
+    }
+}
+

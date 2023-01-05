@@ -1,6 +1,6 @@
 <div 
       *ngFor="let match of matches" 
-      (click)="onMatchClick(match.match_id)"
+      (click)="onMatchClick(match)"
       class="match-container {{ match.match_id }}" 
       [ngClass]="{'same-match': match.sameMatch}" 
       [id]="playerName + '-match-' + match.match_id"

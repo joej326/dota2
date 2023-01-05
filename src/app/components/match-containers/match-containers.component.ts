@@ -10,7 +10,7 @@ export class MatchContainersComponent {
   @Input() playerName: string = '';
   @Input() heroes: any[] = [];
 
-  @Output() onMatchClick$ = new EventEmitter<string>();
+  @Output() onMatchClick$ = new EventEmitter();
 
   onMatchClick(matchId: string) {
     this.onMatchClick$.emit(matchId);
