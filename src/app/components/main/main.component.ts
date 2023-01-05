@@ -28,6 +28,7 @@ export class MainComponent implements OnInit, OnDestroy {
 
 
   ngOnInit() {
+    this.isSameMatchToggleOn = localStorage.getItem('isSameMatchToggleOn') === 'true';
 
     this.apiService.getHeroes().subscribe({
       next: (data: any) => {
@@ -50,8 +51,7 @@ export class MainComponent implements OnInit, OnDestroy {
             billMatch['sameMatch'] = true;
           }
         });
-        this.billiardMatchesToDisplay = [...this.billiardMatches];
-        this.samsclubMatchesToDisplay = [...this.samsclubMatches];
+        this.handleSameMatchesToggle('init');
 
         this.scrollListenerFn = () => {
           window.scrollY >= 1200 ? this.shouldShowBackToTopButton = true : this.shouldShowBackToTopButton = false;
@@ -68,16 +68,34 @@ export class MainComponent implements OnInit, OnDestroy {
     });
   }
 
-  handleSameMatchesToggle() {
-    if (this.isSameMatchToggleOn) {
-      this.isSameMatchToggleOn = false;
-      this.billiardMatchesToDisplay = [...this.billiardMatches];
-      this.samsclubMatchesToDisplay = [...this.samsclubMatches];
-    } else if (!this.isSameMatchToggleOn) {
-      this.isSameMatchToggleOn = true;
-      this.billiardMatchesToDisplay = [...this.billiardMatches.filter(match => match['sameMatch'])];
-      this.samsclubMatchesToDisplay = [...this.samsclubMatches.filter(match => match['sameMatch'])];
+  handleSameMatchesToggle(action?: 'init') {
+
+    if (action === 'init') {
+      if (this.isSameMatchToggleOn) {
+        this.billiardMatchesToDisplay = [...this.billiardMatches.filter(match => match['sameMatch'])];
+        this.samsclubMatchesToDisplay = [...this.samsclubMatches.filter(match => match['sameMatch'])];
+      } else {
+        this.billiardMatchesToDisplay = [...this.billiardMatches];
+        this.samsclubMatchesToDisplay = [...this.samsclubMatches];
+      }
+
+
+      
+    } else {
+      if (this.isSameMatchToggleOn) {
+        this.isSameMatchToggleOn = false;
+        localStorage.setItem('isSameMatchToggleOn', 'false');
+        this.billiardMatchesToDisplay = [...this.billiardMatches];
+        this.samsclubMatchesToDisplay = [...this.samsclubMatches];
+      } else if (!this.isSameMatchToggleOn) {
+        this.isSameMatchToggleOn = true;
+        localStorage.setItem('isSameMatchToggleOn', 'true');
+        this.billiardMatchesToDisplay = [...this.billiardMatches.filter(match => match['sameMatch'])];
+        this.samsclubMatchesToDisplay = [...this.samsclubMatches.filter(match => match['sameMatch'])];
+      }
     }
+
+    
   }
 
   handleScrollToBottom() {
