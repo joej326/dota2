@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 
 import { Router } from '@angular/router';
 import { mergeMap } from 'rxjs';
@@ -9,7 +9,7 @@ import { ApiService } from '../../services/api.service';
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.scss']
 })
-export class MainComponent implements OnInit {
+export class MainComponent implements OnInit, OnDestroy {
   heroes: any[] = [];
   billiardMatches: any[] = [];
   samsclubMatches: any[] = [];
@@ -19,6 +19,8 @@ export class MainComponent implements OnInit {
 
   isSameMatchToggleOn: boolean = false;
   shouldShowBackToTopButton: boolean = false;
+
+  scrollListenerFn: any;
 
 
 
@@ -51,9 +53,16 @@ export class MainComponent implements OnInit {
         this.billiardMatchesToDisplay = [...this.billiardMatches];
         this.samsclubMatchesToDisplay = [...this.samsclubMatches];
 
-        document.addEventListener('scroll', () => {
+        this.scrollListenerFn = () => {
           window.scrollY >= 1200 ? this.shouldShowBackToTopButton = true : this.shouldShowBackToTopButton = false;
-        })
+          localStorage.setItem('scrollPosition', window.scrollY.toString());
+        };
+
+        document.addEventListener('scroll', this.scrollListenerFn);
+
+        setTimeout(() => {
+          window.scrollTo({top: Number(localStorage.getItem('scrollPosition'))});
+        });
 
       }
     });
@@ -80,15 +89,12 @@ export class MainComponent implements OnInit {
 
 
   onMatchClick(match: any, player: 'billiard' | 'samsclub') {
-    // this.apiService.getMatch(matchId).subscribe({
-    //   next: (data: any) => {
-    //     console.log(data);
-    //     if (data.replay_url) {
-    //       window.open(data.replay_url, '_blank');
-    //     }
-    //   }
-    // });':player/hero/:heroId/match/:matchId'
+    
     this.router.navigate([player + '/hero/' + match.hero_id + '/match/' + match.match_id]);
     
+  }
+
+  ngOnDestroy(): void {
+    document.removeEventListener('scroll', this.scrollListenerFn);
   }
 }
