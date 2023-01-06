@@ -2,20 +2,28 @@
 <div class="main-container">
     <h1>{{ player | titlecase }}</h1>
 
-    <div class="data-container">
-        <h2>{{ heroId | hero:heroes }}</h2>
-        <p class="match-start-time">{{ matchData.start_time * 1000 | date: 'MMM d, y - h:mm a' }}</p>
-        <p class="duration">Duration: {{ matchData.duration | duration }}</p>
-    
-        <p 
-            [ngClass]="{'won': isWin, 'lost': !isWin}">
-        {{ isWin === true ? 'WON' : isWin === false ? 'LOST' : '' }}</p>
-        <p>KDA: {{matchPlayerData?.kills }}/{{ matchPlayerData?.deaths }}/{{ matchPlayerData?.assists }}</p>
-        <p>KDA ratio: {{ matchPlayerData?.kda }}</p>
-        <a *ngIf="matchData?.replay_url" [href]="matchData.replay_url" target="_blank">
-            <button>Download Replay</button>
-        </a>
+    <div *ngIf="isLoading === false" class="data-container">
+        <div class="upper-container">
+            <h2>{{ heroId | hero:heroes }}</h2>
+            <p class="match-start-time one">{{ matchData?.start_time * 1000 | date: 'MMM d, y' }}</p>
+            <p class="match-start-time two">{{ matchData?.start_time * 1000 | date: 'h:mm a' }}</p>
+            <p class="duration">Duration: {{ matchData?.duration | duration }}</p>
+        </div>
+        
+        <div class="lower-container">
+
+            <p [ngClass]="{'won': isWin, 'lost': !isWin}">
+                {{ isWin === true ? 'WON' : isWin === false ? 'LOST' : '' }}</p>
+
+            <p>KDA: {{matchPlayerData?.kills }}/{{ matchPlayerData?.deaths }}/{{ matchPlayerData?.assists }}</p>
+            <p>KDA ratio: {{ matchPlayerData?.kda }}</p>
+            <a *ngIf="matchData?.replay_url" [href]="matchData.replay_url" target="_blank">
+                <button>Download Replay</button>
+            </a>
+        </div>
+        
     </div>
+    <h3 *ngIf="isLoading === true">Loading match data...</h3>
     
 </div>
 

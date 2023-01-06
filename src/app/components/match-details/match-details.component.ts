@@ -16,6 +16,7 @@ export class MatchDetailsComponent implements OnInit {
   matchData: any;
   heroId: number;
   heroes: any;
+  isLoading: boolean;
 
   constructor(private api: ApiService, private route: ActivatedRoute) { }
 
@@ -28,7 +29,7 @@ export class MatchDetailsComponent implements OnInit {
     this.player = this.route.snapshot.params['player'];
     
 
-
+    this.isLoading = true;
     this.api.getMatch(matchId).subscribe({
       next: (data: any) => {
         console.log(data);
@@ -39,6 +40,10 @@ export class MatchDetailsComponent implements OnInit {
         this.matchPlayerData = data.players.find((player: any) => player.hero_id === this.heroId);
 
         this.isWin = !!(this.matchPlayerData['win']);
+        this.isLoading = false;
+      },
+      error: () => {
+        this.isLoading = false;
       }
     });
   }
