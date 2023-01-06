@@ -1,10 +1,11 @@
 
 <div class="main-container">
-    <h1>{{ player }}</h1>
+    <h1>{{ player | titlecase }}</h1>
 
     <div class="data-container">
         <h2>{{ heroId | hero:heroes }}</h2>
-        <p>Duration: {{ matchData.duration | duration }}</p>
+        <p class="match-start-time">{{ matchData.start_time * 1000 | date: 'MMM d, y - h:mm a' }}</p>
+        <p class="duration">Duration: {{ matchData.duration | duration }}</p>
     
         <p 
             [ngClass]="{'won': isWin, 'lost': !isWin}">

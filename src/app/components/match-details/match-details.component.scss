@@ -24,7 +24,7 @@
         h2 {
             font-size: 30px;
             text-align: center;
-            margin-top: 40px;
+            margin-top: 32px;
             margin-bottom: 0;
         }
     }
@@ -38,13 +38,21 @@
             color: green;
             font-weight: 700;
             font-size: 40px;
-            margin-top: 50px;
+            margin-top: 92px;
         }
         &.lost {
             color: red;
             font-weight: 700;
             font-size: 40px;
-            margin-top: 50px;
+            margin-top: 92px;
+        }
+        &.duration {
+            font-size: 18px;
+            margin: 5px 0;
+        }
+        &.match-start-time {
+            font-size: 18px;
+            margin: 5px 0;
         }
     }
     a {
