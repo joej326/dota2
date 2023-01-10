@@ -11,8 +11,13 @@ export class MatchDetailsComponent implements OnInit {
 
   replayUrl: string = '';
   isWin: boolean | unknown;
+
   player: string = '';
+  matchAllPlayersData: any;
   matchPlayerData: any;
+  radiantPlayers: any;
+  direPlayers: any;
+
   matchData: any;
   heroId: number;
   heroes: any;
@@ -37,6 +42,9 @@ export class MatchDetailsComponent implements OnInit {
         if (data.replay_url) {
           this.replayUrl = data.replay_url;
         }
+        this.matchAllPlayersData = [...data.players];
+        this.radiantPlayers = [...data.players.filter((player: any) => player.isRadiant)];
+        this.direPlayers = [...data.players.filter((player: any) => !player.isRadiant)];
         this.matchPlayerData = data.players.find((player: any) => player.hero_id === this.heroId);
 
         this.isWin = !!(this.matchPlayerData['win']);
