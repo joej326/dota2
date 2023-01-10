@@ -25,11 +25,16 @@
     <div *ngIf="isLoading === false" class="other-data-container">
         <div class="radiant">
             <p class="header">Radiant:</p>
-            <p *ngFor="let radiantPlayer of radiantPlayers" class="other-player"> {{ radiantPlayer.hero_id | hero:heroes }}:&nbsp;&nbsp;{{radiantPlayer?.kills }}/{{ radiantPlayer?.deaths }}/{{ radiantPlayer?.assists }}</p>
+            <p *ngFor="let radiantPlayer of radiantPlayers" 
+                class="other-player" 
+                [ngClass]="{'selected-player': radiantPlayer.hero_id === heroId}"> 
+                {{ radiantPlayer.hero_id | hero:heroes }}:&nbsp;&nbsp;{{radiantPlayer?.kills }}/{{ radiantPlayer?.deaths }}/{{ radiantPlayer?.assists }}</p>
         </div>
         <div class="dire">
             <p class="header">Dire:</p>
-            <p *ngFor="let direPlayer of direPlayers" class="other-player"> {{ direPlayer.hero_id | hero:heroes }}:&nbsp;&nbsp;{{direPlayer?.kills }}/{{ direPlayer?.deaths }}/{{ direPlayer?.assists }}</p>
+            <p *ngFor="let direPlayer of direPlayers" 
+                class="other-player" 
+                [ngClass]="{'selected-player': direPlayer.hero_id === heroId}"> {{ direPlayer.hero_id | hero:heroes }}:&nbsp;&nbsp;{{direPlayer?.kills }}/{{ direPlayer?.deaths }}/{{ direPlayer?.assists }}</p>
         </div>
     </div>
 

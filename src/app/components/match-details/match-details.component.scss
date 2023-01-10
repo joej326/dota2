@@ -60,6 +60,10 @@ h1.player-name {
         }
         p.other-player {
             font-size: 18px;
+
+            &.selected-player {
+                color: blue;
+            }
         }
     }
 
