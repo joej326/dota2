@@ -64,6 +64,9 @@ h1.player-name {
             &.selected-player {
                 color: blue;
             }
+            &.same-match-player {
+                color: blue;
+            }
         }
     }
 

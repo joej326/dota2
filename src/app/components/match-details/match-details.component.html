@@ -27,14 +27,21 @@
             <p class="header">Radiant:</p>
             <p *ngFor="let radiantPlayer of radiantPlayers" 
                 class="other-player" 
-                [ngClass]="{'selected-player': radiantPlayer.hero_id === heroId}"> 
+                [ngClass]="{
+                    'selected-player': radiantPlayer.hero_id === heroId,
+                    'same-match-player': radiantPlayer.personaname === 'GarconTheGuy' || radiantPlayer.personaname === 'Gabe-O-Saurus'
+                }"> 
                 {{ radiantPlayer.hero_id | hero:heroes }}:&nbsp;&nbsp;{{radiantPlayer?.kills }}/{{ radiantPlayer?.deaths }}/{{ radiantPlayer?.assists }}</p>
         </div>
         <div class="dire">
             <p class="header">Dire:</p>
             <p *ngFor="let direPlayer of direPlayers" 
                 class="other-player" 
-                [ngClass]="{'selected-player': direPlayer.hero_id === heroId}"> {{ direPlayer.hero_id | hero:heroes }}:&nbsp;&nbsp;{{direPlayer?.kills }}/{{ direPlayer?.deaths }}/{{ direPlayer?.assists }}</p>
+                [ngClass]="{
+                    'selected-player': direPlayer.hero_id === heroId,
+                    'same-match-player': direPlayer.personaname === 'GarconTheGuy' || direPlayer.personaname === 'Gabe-O-Saurus'
+                }"> 
+                {{ direPlayer.hero_id | hero:heroes }}:&nbsp;&nbsp;{{direPlayer?.kills }}/{{ direPlayer?.deaths }}/{{ direPlayer?.assists }}</p>
         </div>
     </div>
 
