@@ -52,6 +52,31 @@ h1.player-name {
         gap: 5vw;
         margin-bottom: 10px;
 
+        .radiant-container {
+            background-color: rgba(green, 0.125);
+            border-radius: 10px;
+            padding: 15px;
+            width: 225px;
+            height: 215px;
+
+            .radiant {
+            
+            }
+        }
+
+        .dire-container {
+            background-color: rgba(red, 0.125);
+            border-radius: 10px;
+            padding: 15px;
+            width: 225px;
+            height: 215px;
+
+            .dire {
+                
+            }
+        }
+
+
         p.header {
             font-size: 22px;
             margin-bottom: 10px;
