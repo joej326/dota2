@@ -1,0 +1,13 @@
+
+<div class="{{team}}">
+    <p class="header">{{team | titlecase}}: {{ matchData?.[team+'_score'] }}</p>
+    <p *ngFor="let player of players; let last = last;"
+        class="player" 
+        [ngClass]="{
+            'selected-player': player.hero_id === heroId,
+            'same-match-player': player.personaname === 'BurlyCheddar' || player.personaname === 'Gabe-O-Saurus',
+            'last': last
+        }">
+        {{ player.hero_id | hero:heroes }}<span>({{player?.level}})</span>:&nbsp;&nbsp;{{player?.kills }}/{{
+        player?.deaths }}/{{ player?.assists }}</p>
+</div>

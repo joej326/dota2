@@ -14,32 +14,27 @@
         </div>
             
         <div *ngIf="isLoading === false" class="other-data-container">
+
             <div class="radiant-container">
-                <div class="radiant">
-                    <p class="header">Radiant: {{ matchData.radiant_score }}</p>
-                    <p *ngFor="let radiantPlayer of radiantPlayers; let last = last;" 
-                        class="other-player" 
-                        [ngClass]="{
-                            'selected-player': radiantPlayer.hero_id === heroId,
-                            'same-match-player': radiantPlayer.personaname === 'BurlyCheddar' || radiantPlayer.personaname === 'Gabe-O-Saurus',
-                            'last': last
-                        }"> 
-                        {{ radiantPlayer.hero_id | hero:heroes }}<span>({{radiantPlayer?.level}})</span>:&nbsp;&nbsp;{{radiantPlayer?.kills }}/{{ radiantPlayer?.deaths }}/{{ radiantPlayer?.assists }}</p>
-                </div>
+                <app-team-details
+                    [heroes]="heroes"
+                    [matchData]="matchData" 
+                    [heroId]="heroId"
+
+                    [team]="'radiant'" 
+                    [players]="radiantPlayers">
+                </app-team-details>
             </div>
             
             <div class="dire-container">
-                <div class="dire">
-                    <p class="header">Dire: {{ matchData.dire_score }}</p>
-                    <p *ngFor="let direPlayer of direPlayers; let last = last;" 
-                        class="other-player" 
-                        [ngClass]="{
-                            'selected-player': direPlayer.hero_id === heroId,
-                            'same-match-player': direPlayer.personaname === 'BurlyCheddar' || direPlayer.personaname === 'Gabe-O-Saurus',
-                            'last': last
-                        }"> 
-                        {{ direPlayer.hero_id | hero:heroes }}<span>({{direPlayer?.level}})</span>:&nbsp;&nbsp;{{direPlayer?.kills }}/{{ direPlayer?.deaths }}/{{ direPlayer?.assists }}</p>
-                </div>
+                <app-team-details
+                    [heroes]="heroes"
+                    [matchData]="matchData" 
+                    [heroId]="heroId"
+                    
+                    [team]="'dire'" 
+                    [players]="direPlayers">
+                </app-team-details>
             </div>
             
         </div>

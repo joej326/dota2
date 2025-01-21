@@ -9,6 +9,7 @@ import { DurationPipe } from './pipes/duration.pipe';
 import { MatchDetailsComponent } from './components/match-details/match-details.component';
 import { RouterModule, Routes } from '@angular/router';
 import { MainComponent } from './components/main/main.component';
+import { TeamDetailsComponent } from './components/match-details/team-details/team-details.component';
 
 const appRoutes: Routes = [
   {path: ':player/hero/:heroId/match/:matchId', component: MatchDetailsComponent},
@@ -22,7 +23,8 @@ const appRoutes: Routes = [
     MatchContainersComponent,
     DurationPipe,
     MatchDetailsComponent,
-    MainComponent
+    MainComponent,
+    TeamDetailsComponent
   ],
   imports: [
     BrowserModule,

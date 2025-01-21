@@ -1,0 +1,29 @@
+
+p {
+    margin-top: 0;
+    margin-bottom: 0;
+    font-weight: 600;
+    font-size: 18px;
+    white-space: nowrap;
+
+    &.header {
+        font-size: 22px;
+        margin-bottom: 17px;
+    }
+
+    &.selected-player {
+        color: blue;
+    }
+    &.same-match-player {
+        color: blue;
+    }
+
+    span {
+        font-size: 13px;
+        vertical-align: top;
+    }
+
+    &:not(.last) {
+        margin-bottom: 10px;
+    }
+}
