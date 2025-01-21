@@ -16,7 +16,7 @@
         <div *ngIf="isLoading === false" class="other-data-container">
             <div class="radiant-container">
                 <div class="radiant">
-                    <p class="header">Radiant:</p>
+                    <p class="header">Radiant: {{ matchData.radiant_score }}</p>
                     <p *ngFor="let radiantPlayer of radiantPlayers" 
                         class="other-player" 
                         [ngClass]="{
@@ -29,7 +29,7 @@
             
             <div class="dire-container">
                 <div class="dire">
-                    <p class="header">Dire:</p>
+                    <p class="header">Dire: {{ matchData.dire_score }}</p>
                     <p *ngFor="let direPlayer of direPlayers" 
                         class="other-player" 
                         [ngClass]="{
