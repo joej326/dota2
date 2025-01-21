@@ -8,6 +8,6 @@
             'same-match-player': player.personaname === 'BurlyCheddar' || player.personaname === 'Gabe-O-Saurus',
             'last': last
         }">
-        {{ player.hero_id | hero:heroes }}<span>({{player?.level}})</span>:&nbsp;&nbsp;{{player?.kills }}/{{
+        {{ player.hero_id | hero:heroes }}<span>({{player?.level}})</span>&nbsp;|&nbsp;{{player?.kills }}/{{
         player?.deaths }}/{{ player?.assists }}</p>
 </div>
