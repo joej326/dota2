@@ -21,7 +21,7 @@
                         class="other-player" 
                         [ngClass]="{
                             'selected-player': radiantPlayer.hero_id === heroId,
-                            'same-match-player': radiantPlayer.personaname === '5-MeO-DMT' || radiantPlayer.personaname === 'Gabe-O-Saurus'
+                            'same-match-player': radiantPlayer.personaname === 'BurlyCheddar' || radiantPlayer.personaname === 'Gabe-O-Saurus'
                         }"> 
                         {{ radiantPlayer.hero_id | hero:heroes }}:&nbsp;&nbsp;{{radiantPlayer?.kills }}/{{ radiantPlayer?.deaths }}/{{ radiantPlayer?.assists }}</p>
                 </div>
@@ -34,7 +34,7 @@
                         class="other-player" 
                         [ngClass]="{
                             'selected-player': direPlayer.hero_id === heroId,
-                            'same-match-player': direPlayer.personaname === '5-MeO-DMT' || direPlayer.personaname === 'Gabe-O-Saurus'
+                            'same-match-player': direPlayer.personaname === 'BurlyCheddar' || direPlayer.personaname === 'Gabe-O-Saurus'
                         }"> 
                         {{ direPlayer.hero_id | hero:heroes }}:&nbsp;&nbsp;{{direPlayer?.kills }}/{{ direPlayer?.deaths }}/{{ direPlayer?.assists }}</p>
                 </div>
