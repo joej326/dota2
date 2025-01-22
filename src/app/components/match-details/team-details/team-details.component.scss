@@ -15,17 +15,45 @@ p {
 
     &.selected-player {
         color: blue;
+
+        .hero-level {
+            border-color: blue;
+        }
     }
     &.same-match-player {
         color: blue;
+
+        .hero-level {
+            border-color: blue;
+        }
     }
 
     span {
-        font-size: 13px;
-        vertical-align: top;
+        // font-size: 13px;
+        // vertical-align: top;
+
+        &.hero-name {
+            position: relative;
+            // border-bottom: solid black 1px;
+        }
+        &.hero-level {
+            position: absolute;
+            top: 0px;
+            left: -14px;
+            transform: translateX(-50%);
+            font-size: 13px;
+            border: solid 1px;
+            border-color: black;
+            border-radius: 50%;
+            padding: 0 2px;
+        }
+        &.kills-deaths-assists {
+
+        }
+
     }
 
     &:not(.last) {
-        margin-bottom: 10px;
+        margin-bottom: 15px;
     }
 }
