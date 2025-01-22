@@ -60,10 +60,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "dota2:build:production"
+              "buildTarget": "dota2:build:production"
             },
             "development": {
-              "browserTarget": "dota2:build:development"
+              "buildTarget": "dota2:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -71,7 +71,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "dota2:build"
+            "buildTarget": "dota2:build"
           }
         },
         "test": {
