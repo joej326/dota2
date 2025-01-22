@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { HeroPipe } from './pipes/hero.pipe';
@@ -16,22 +16,15 @@ const appRoutes: Routes = [
   {path: '', component: MainComponent, pathMatch: 'full'},
 ];
 
-@NgModule({
-  declarations: [
-    AppComponent,
-    HeroPipe,
-    MatchContainersComponent,
-    DurationPipe,
-    MatchDetailsComponent,
-    MainComponent,
-    TeamDetailsComponent
-  ],
-  imports: [
-    BrowserModule,
-    HttpClientModule,
-    RouterModule.forRoot(appRoutes)
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
-})
+@NgModule({ declarations: [
+        AppComponent,
+        HeroPipe,
+        MatchContainersComponent,
+        DurationPipe,
+        MatchDetailsComponent,
+        MainComponent,
+        TeamDetailsComponent
+    ],
+    bootstrap: [AppComponent], imports: [BrowserModule,
+        RouterModule.forRoot(appRoutes)], providers: [provideHttpClient(withInterceptorsFromDi())] })
 export class AppModule { }
