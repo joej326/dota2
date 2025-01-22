@@ -9,6 +9,8 @@ p {
     &.header {
         font-size: 22px;
         margin-bottom: 17px;
+        padding-bottom: 5px;
+        border-bottom: solid black 1px;
     }
 
     &.selected-player {
