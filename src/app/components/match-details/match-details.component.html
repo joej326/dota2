@@ -1,8 +1,8 @@
 <h1 class="player-name">{{ player | titlecase }}</h1>
 
-<div class="main-container">
+<div *ngIf="isLoading === false && !httpErrorStatus" class="main-container">
 
-    <div *ngIf="isLoading === false" class="data-container">
+    <div class="data-container">
         <div class="upper-container">
             <h2>{{ heroId | hero:heroes }}</h2>
             <p class="match-start-time one">{{ matchData?.start_time * 1000 | date: 'MMM d, y' }}</p>
@@ -43,7 +43,15 @@
         </a>
     </div>
 
-    <h3 *ngIf="isLoading === true">Loading match data...</h3>
     
+    
+    
+</div>
+
+<h3 *ngIf="isLoading === true">Loading match data...</h3>
+
+<div *ngIf="isLoading === false && httpErrorStatus === 404" class="match-not-found-container">
+    <h3>Match data could not be found!!</h3>
+    <img src="assets/images/attention2weegee.jpg" alt="">
 </div>
 

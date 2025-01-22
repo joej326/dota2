@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
@@ -22,6 +23,7 @@ export class MatchDetailsComponent implements OnInit {
   heroId: number;
   heroes: any;
   isLoading: boolean;
+  httpErrorStatus: number;
 
   constructor(private api: ApiService, private route: ActivatedRoute) { }
 
@@ -50,7 +52,10 @@ export class MatchDetailsComponent implements OnInit {
         this.isWin = !!(this.matchPlayerData['win']);
         this.isLoading = false;
       },
-      error: () => {
+      error: (err: HttpErrorResponse) => {
+        console.log('There was an error:', err);
+        
+        this.httpErrorStatus = err.status;
         this.isLoading = false;
       }
     });

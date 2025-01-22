@@ -1,6 +1,6 @@
 @import '../../mixins/button.scss';
 
-h1.player-name {
+h1, h3 {
     text-align: center;
 }
 
@@ -63,12 +63,6 @@ h1.player-name {
             }
         }
 
-        h1 {
-            border-bottom: solid black 2px;
-            padding-bottom: 3px;
-            padding: 0 5px;
-        }
-
         h2 {
             font-size: 30px;
             text-align: center;
@@ -110,5 +104,30 @@ h1.player-name {
     button {
         @include button;
         margin: 0 auto;
+    }
+}
+
+.match-not-found-container {
+    text-align: center;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+
+    h3 {
+        margin-bottom: 0;
+        font-size: 28px;
+
+        span {
+            font-size: 25px;
+        }
+    } 
+
+    img {
+        display: block;
+        margin: 0 auto;
+        margin-top: 10px;
+        transform: translateX(-8%);
+        width: 40%;
     }
 }
