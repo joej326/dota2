@@ -1,7 +1,4 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { mergeMap } from 'rxjs';
-import { ApiService } from './services/api.service';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',

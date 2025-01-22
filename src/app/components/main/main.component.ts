@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, computed, effect, OnDestroy, OnInit, signal } from '@angular/core';
 
 import { Router } from '@angular/router';
 import { mergeMap } from 'rxjs';
@@ -22,9 +22,48 @@ export class MainComponent implements OnInit, OnDestroy {
 
   scrollListenerFn: any;
 
+  billiardSignal = signal<any>(undefined);
+  samsclubSignal = signal<any>(undefined);
 
 
-  constructor(private apiService: ApiService, private router: Router) { }
+  constructor(private apiService: ApiService, private router: Router) {
+
+    effect(() => {
+  
+        this.billiardMatches = this.billiardSignal();
+        this.samsclubMatches = this.samsclubSignal();
+  
+        if (this.billiardMatches && this.samsclubMatches) {
+  
+          console.log(this.billiardMatches);
+          this.samsclubMatches = this.samsclubSignal();
+  
+          this.billiardMatches.forEach(billMatch => {
+            const samsclubGameWithMatchingId = this.samsclubMatches.find(samsMatch => billMatch.match_id === samsMatch.match_id);
+            if (samsclubGameWithMatchingId) {
+              samsclubGameWithMatchingId['sameMatch'] = true;
+              billMatch['sameMatch'] = true;
+            }
+          });
+          this.handleSameMatchesToggle('init');
+  
+          this.scrollListenerFn = () => {
+            window.scrollY >= 1200 ? this.shouldShowBackToTopButton = true : this.shouldShowBackToTopButton = false;
+            localStorage.setItem('scrollPosition', window.scrollY.toString());
+          };
+  
+          document.addEventListener('scroll', this.scrollListenerFn);
+  
+          setTimeout(() => {
+            window.scrollTo({top: Number(localStorage.getItem('scrollPosition'))});
+          });
+  
+        }
+        
+  
+    });
+
+  }
 
 
   ngOnInit() {
@@ -36,36 +75,42 @@ export class MainComponent implements OnInit, OnDestroy {
         localStorage.setItem('heroes', JSON.stringify(this.heroes as any));
       }
     });
-    this.apiService.getPlayerRecentMatches(121010326).pipe(mergeMap((data: any) => {
-      this.billiardMatches = data;
-      return this.apiService.getPlayerRecentMatches(112553511);
-    })).subscribe({
-      next: (data: any) => {
-        console.log(data);
-        this.samsclubMatches = data;
 
-        this.billiardMatches.forEach(billMatch => {
-          const samsclubGameWithMatchingId = this.samsclubMatches.find(samsMatch => billMatch.match_id === samsMatch.match_id);
-          if (samsclubGameWithMatchingId) {
-            samsclubGameWithMatchingId['sameMatch'] = true;
-            billMatch['sameMatch'] = true;
-          }
-        });
-        this.handleSameMatchesToggle('init');
+    this.apiService.getPlayerRecentMatches(121010326).subscribe({next: (data) => this.billiardSignal.set(data)});
+    this.apiService.getPlayerRecentMatches(112553511).subscribe({next: (data) => this.samsclubSignal.set(data)});
 
-        this.scrollListenerFn = () => {
-          window.scrollY >= 1200 ? this.shouldShowBackToTopButton = true : this.shouldShowBackToTopButton = false;
-          localStorage.setItem('scrollPosition', window.scrollY.toString());
-        };
+    // old mergemap way I was using before I implemented signals.
 
-        document.addEventListener('scroll', this.scrollListenerFn);
+    // this.apiService.getPlayerRecentMatches(121010326).pipe(mergeMap((data: any) => {
+    //   this.billiardMatches = data;
+    //   return this.apiService.getPlayerRecentMatches(112553511);
+    // })).subscribe({
+    //   next: (data: any) => {
+    //     console.log(data);
+    //     this.samsclubMatches = data;
 
-        setTimeout(() => {
-          window.scrollTo({top: Number(localStorage.getItem('scrollPosition'))});
-        });
+    //     this.billiardMatches.forEach(billMatch => {
+    //       const samsclubGameWithMatchingId = this.samsclubMatches.find(samsMatch => billMatch.match_id === samsMatch.match_id);
+    //       if (samsclubGameWithMatchingId) {
+    //         samsclubGameWithMatchingId['sameMatch'] = true;
+    //         billMatch['sameMatch'] = true;
+    //       }
+    //     });
+    //     this.handleSameMatchesToggle('init');
 
-      }
-    });
+    //     this.scrollListenerFn = () => {
+    //       window.scrollY >= 1200 ? this.shouldShowBackToTopButton = true : this.shouldShowBackToTopButton = false;
+    //       localStorage.setItem('scrollPosition', window.scrollY.toString());
+    //     };
+
+    //     document.addEventListener('scroll', this.scrollListenerFn);
+
+    //     setTimeout(() => {
+    //       window.scrollTo({top: Number(localStorage.getItem('scrollPosition'))});
+    //     });
+
+    //   }
+    // });
   }
 
   handleSameMatchesToggle(action?: 'init') {

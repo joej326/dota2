@@ -25,6 +25,8 @@ export class MatchDetailsComponent implements OnInit {
   isLoading: boolean;
   httpErrorStatus: number;
 
+  
+
   constructor(private api: ApiService, private route: ActivatedRoute) { }
 
 
