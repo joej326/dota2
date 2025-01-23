@@ -40,7 +40,7 @@ p {
             position: absolute;
             top: 1px;
             left: -14px;
-            width: 14x;
+            min-width: 14px;
             text-align: center;
             transform: translateX(-50%);
             font-size: 14px;
