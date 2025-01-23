@@ -1,5 +1,5 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, viewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
 
@@ -8,7 +8,11 @@ import { ApiService } from 'src/app/services/api.service';
   templateUrl: './match-details.component.html',
   styleUrls: ['./match-details.component.scss']
 })
-export class MatchDetailsComponent implements OnInit {
+export class MatchDetailsComponent implements OnInit, AfterViewInit {
+
+  viewInitialized = false;
+
+  // divEl = viewChild.required<ElementRef>('errorImage');
 
   replayUrl: string = '';
   isWin: boolean | unknown;
@@ -61,5 +65,9 @@ export class MatchDetailsComponent implements OnInit {
         this.isLoading = false;
       }
     });
+  }
+
+  ngAfterViewInit(): void {
+    this.viewInitialized = true;
   }
 }
