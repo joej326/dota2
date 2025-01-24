@@ -11,7 +11,7 @@
             <p [ngClass]="{'won': isWin, 'lost': !isWin}">
                 {{ isWin === true ? 'WON' : isWin === false ? 'LOST' : '' }}</p>
 
-            <button (click)="showKda = !showKda" class="show-kda {{ showKda ? 'on' : '' }}">Show KDA</button>
+            <button (click)="showKda = !showKda" class="show-kda {{ showKda ? 'on' : '' }}">Show KDA Ratio</button>
         </div>
             
         <div *ngIf="isLoading === false" class="other-data-container">
