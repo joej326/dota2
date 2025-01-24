@@ -10,7 +10,8 @@
             <p class="duration">Duration: {{ matchData?.duration | duration }}</p>
             <p [ngClass]="{'won': isWin, 'lost': !isWin}">
                 {{ isWin === true ? 'WON' : isWin === false ? 'LOST' : '' }}</p>
-            <p>KDA ratio: {{ matchPlayerData?.kda }}</p>
+
+            <button (click)="showKda = !showKda" class="show-kda {{ showKda ? 'on' : '' }}">Show KDA</button>
         </div>
             
         <div *ngIf="isLoading === false" class="other-data-container">
@@ -22,7 +23,8 @@
                     [heroId]="heroId"
 
                     [team]="'radiant'" 
-                    [players]="radiantPlayers">
+                    [players]="radiantPlayers"
+                    [showKda]="showKda">
                 </app-team-details>
             </div>
             
@@ -33,7 +35,8 @@
                     [heroId]="heroId"
                     
                     [team]="'dire'" 
-                    [players]="direPlayers">
+                    [players]="direPlayers"
+                    [showKda]="showKda">
                 </app-team-details>
             </div>
             

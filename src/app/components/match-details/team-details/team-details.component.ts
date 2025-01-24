@@ -7,11 +7,13 @@ import { Component, Input } from '@angular/core';
 })
 export class TeamDetailsComponent {
 
+  // application data
   @Input() heroes: any;
   @Input() matchData: any;
   @Input() heroId: any;
 
-
+  // component data
   @Input() team: 'radiant' | 'dire';
   @Input() players: any;
+  @Input() showKda: boolean;
 }
