@@ -11,7 +11,7 @@
             <p [ngClass]="{'won': isWin, 'lost': !isWin}">
                 {{ isWin === true ? 'WON' : isWin === false ? 'LOST' : '' }}</p>
 
-            <button (click)="showKda = !showKda" class="show-kda {{ showKda ? 'on' : '' }}">Show KDA Ratios</button>
+            <button (click)="showKdaRatios = !showKdaRatios" class="show-kda {{ showKdaRatios ? 'on' : '' }}">Show KDA Ratios</button>
         </div>
             
         <div *ngIf="isLoading === false" class="other-data-container">
@@ -24,7 +24,7 @@
 
                     [team]="'radiant'" 
                     [players]="radiantPlayers"
-                    [showKda]="showKda">
+                    [showKdaRatios]="showKdaRatios">
                 </app-team-details>
             </div>
             
@@ -36,7 +36,7 @@
                     
                     [team]="'dire'" 
                     [players]="direPlayers"
-                    [showKda]="showKda">
+                    [showKdaRatios]="showKdaRatios">
                 </app-team-details>
             </div>
             
