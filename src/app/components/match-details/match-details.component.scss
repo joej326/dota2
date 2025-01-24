@@ -63,6 +63,7 @@ h1, h3 {
             button {
                 @include button;
                 font-weight: 700;
+                margin-bottom: 10px;
 
                 &:hover {
                     background-color: darken(lightblue, 5%);
