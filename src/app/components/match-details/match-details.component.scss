@@ -65,9 +65,9 @@ h1, h3 {
                 font-weight: 700;
                 margin-bottom: 10px;
 
-                &:hover {
-                    background-color: darken(lightblue, 5%);
-                }
+                // &:hover {
+                //     background-color: darken(lightblue, 5%);
+                // }
 
                 &.on {
                     background-color: green;
