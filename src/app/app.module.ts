@@ -4,7 +4,7 @@ import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http'
 
 import { AppComponent } from './app.component';
 import { HeroPipe } from './pipes/hero.pipe';
-import { MatchContainersComponent } from './components/match-containers/match-containers.component';
+import { MatchContainersComponent } from './components/main/match-containers/match-containers.component';
 import { DurationPipe } from './pipes/duration.pipe';
 import { MatchDetailsComponent } from './components/match-details/match-details.component';
 import { RouterModule, Routes } from '@angular/router';
