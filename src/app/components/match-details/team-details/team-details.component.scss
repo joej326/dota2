@@ -27,6 +27,13 @@ p {
             border-color: blue;
         }
     }
+    &.abandoned {
+        color: firebrick;
+
+        .hero-level {
+            border-color: firebrick;
+        }
+    }
 
     span {
         // font-size: 13px;
