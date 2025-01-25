@@ -29,6 +29,7 @@ p {
     }
     &.abandoned {
         color: firebrick;
+        text-decoration: line-through;
 
         .hero-level {
             border-color: firebrick;
