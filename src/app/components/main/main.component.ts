@@ -132,36 +132,6 @@ export class MainComponent implements OnInit, OnDestroy {
         this.filterArrays();
       }
     }
-
-
-
-
-
-    // if (isInit) {
-    //   if (this.isSameMatchToggleOn) {
-    //     this.billiardMatchesToDisplay = [...this.billiardMatches.filter(match => match['sameMatch'])];
-    //     this.samsclubMatchesToDisplay = [...this.samsclubMatches.filter(match => match['sameMatch'])];
-    //   } else {
-    //     this.billiardMatchesToDisplay = [...this.billiardMatches];
-    //     this.samsclubMatchesToDisplay = [...this.samsclubMatches];
-    //   }
-
-
-      
-    // } else {
-    //   if (this.isSameMatchToggleOn) {
-    //     this.isSameMatchToggleOn = false;
-    //     localStorage.setItem('isSameMatchToggleOn', 'false');
-    //     this.billiardMatchesToDisplay = [...this.billiardMatches];
-    //     this.samsclubMatchesToDisplay = [...this.samsclubMatches];
-    //   } else if (!this.isSameMatchToggleOn) {
-    //     this.isSameMatchToggleOn = true;
-    //     localStorage.setItem('isSameMatchToggleOn', 'true');
-    //     this.billiardMatchesToDisplay = [...this.billiardMatches.filter(match => match['sameMatch'])];
-    //     this.samsclubMatchesToDisplay = [...this.samsclubMatches.filter(match => match['sameMatch'])];
-    //   }
-    // }
-
     
   }
 
