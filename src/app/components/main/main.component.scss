@@ -3,10 +3,6 @@
 .btn {
     @include button;
 
-    &.scroll-to-bottom {
-        margin: 15px auto 0 auto;
-    }
-
     &.same-match{
         &.on {
             background-color: green;
@@ -30,6 +26,7 @@
 
 .btn-container {
     display: flex;
+    flex-wrap: wrap-reverse;
     justify-content: center;
     align-items: center;
 }
