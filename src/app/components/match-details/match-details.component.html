@@ -2,7 +2,7 @@
 
 <div *ngIf="isLoading === false && !httpErrorStatus" class="main-container">
 
-    <div class="data-container">
+    <div class="data-container" [ngClass]="{'ranked': matchData.lobby_type === 7}">
         <div class="upper-container">
             <h2>{{ heroId | hero:heroes }}</h2>
             <p class="match-start-time one">{{ matchData?.start_time * 1000 | date: 'MMM d, y' }}</p>

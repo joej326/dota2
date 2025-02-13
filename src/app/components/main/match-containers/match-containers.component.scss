@@ -28,6 +28,9 @@
         background: green;
         color: white;
     }
+    &.ranked {
+        border: solid goldenrod 2px;
+    }
 
     p {
 

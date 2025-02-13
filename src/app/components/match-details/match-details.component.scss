@@ -22,6 +22,10 @@ h1, h3 {
         flex-direction: column;
         justify-content: space-around;
 
+        &.ranked {
+            border: solid goldenrod 2px;
+        }
+
         .upper-container {
             display: flex;
             flex-direction: column;

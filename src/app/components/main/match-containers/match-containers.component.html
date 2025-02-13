@@ -2,7 +2,7 @@
       *ngFor="let match of matches" 
       (click)="onMatchClick(match)"
       class="match-container {{ match.match_id }}" 
-      [ngClass]="{'same-match': match.sameMatch}" 
+      [ngClass]="{'same-match': match.sameMatch, 'ranked': match.lobby_type === 7}" 
       [id]="playerName + '-match-' + match.match_id"
     >
       <p class="hero-id">{{ match.hero_id | hero:heroes }}</p>
