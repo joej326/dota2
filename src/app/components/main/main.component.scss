@@ -3,12 +3,17 @@
 .btn {
     @include button;
 
-    &.on {
-        background-color: green;
-        color: white;
+    &.same-match{
+        &.on {
+            background-color: green;
+            color: white;
+        }
     }
-
-    
+    &.ranked{
+        &.on {
+            background-color: goldenrod;
+        }
+    }
 
     &.back-to-top {
         position: sticky;

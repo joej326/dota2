@@ -18,6 +18,7 @@ export class MainComponent implements OnInit, OnDestroy {
   samsclubMatchesToDisplay: any[] = [];
 
   isSameMatchToggleOn: boolean = false;
+  isRankedToggleOn: boolean = false;
   shouldShowBackToTopButton: boolean = false;
 
   scrollListenerFn: any;
@@ -45,7 +46,7 @@ export class MainComponent implements OnInit, OnDestroy {
               billMatch['sameMatch'] = true;
             }
           });
-          this.handleSameMatchesToggle('init');
+          this.handleFilterToggle('init');
   
           this.scrollListenerFn = () => {
             window.scrollY >= 1200 ? this.shouldShowBackToTopButton = true : this.shouldShowBackToTopButton = false;
@@ -68,6 +69,7 @@ export class MainComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.isSameMatchToggleOn = localStorage.getItem('isSameMatchToggleOn') === 'true';
+    this.isRankedToggleOn = localStorage.getItem('isRankedToggleOn') === 'true';
 
     this.apiService.getHeroes().subscribe({
       next: (data: any) => {
@@ -96,7 +98,7 @@ export class MainComponent implements OnInit, OnDestroy {
     //         billMatch['sameMatch'] = true;
     //       }
     //     });
-    //     this.handleSameMatchesToggle('init');
+    //     this.handleFilterToggle('init');
 
     //     this.scrollListenerFn = () => {
     //       window.scrollY >= 1200 ? this.shouldShowBackToTopButton = true : this.shouldShowBackToTopButton = false;
@@ -113,34 +115,72 @@ export class MainComponent implements OnInit, OnDestroy {
     // });
   }
 
-  handleSameMatchesToggle(action?: 'init') {
+  handleFilterToggle(filterType: 'sameMatch' | 'ranked' | 'init') {
 
-    if (action === 'init') {
-      if (this.isSameMatchToggleOn) {
-        this.billiardMatchesToDisplay = [...this.billiardMatches.filter(match => match['sameMatch'])];
-        this.samsclubMatchesToDisplay = [...this.samsclubMatches.filter(match => match['sameMatch'])];
-      } else {
-        this.billiardMatchesToDisplay = [...this.billiardMatches];
-        this.samsclubMatchesToDisplay = [...this.samsclubMatches];
-      }
-
-
-      
+    if (filterType === 'init') {
+        this.filterArrays();
     } else {
-      if (this.isSameMatchToggleOn) {
-        this.isSameMatchToggleOn = false;
-        localStorage.setItem('isSameMatchToggleOn', 'false');
-        this.billiardMatchesToDisplay = [...this.billiardMatches];
-        this.samsclubMatchesToDisplay = [...this.samsclubMatches];
-      } else if (!this.isSameMatchToggleOn) {
-        this.isSameMatchToggleOn = true;
-        localStorage.setItem('isSameMatchToggleOn', 'true');
-        this.billiardMatchesToDisplay = [...this.billiardMatches.filter(match => match['sameMatch'])];
-        this.samsclubMatchesToDisplay = [...this.samsclubMatches.filter(match => match['sameMatch'])];
+
+      if (filterType === 'sameMatch') {
+        this.isSameMatchToggleOn = !this.isSameMatchToggleOn;
+        localStorage.setItem('isSameMatchToggleOn', this.isSameMatchToggleOn ? 'true' : 'false');
+        this.filterArrays();
+  
+      } else if (filterType === 'ranked') {
+        this.isRankedToggleOn = !this.isRankedToggleOn;
+        localStorage.setItem('isRankedToggleOn', this.isRankedToggleOn ? 'true' : 'false');
+        this.filterArrays();
       }
     }
 
+
+
+
+
+    // if (isInit) {
+    //   if (this.isSameMatchToggleOn) {
+    //     this.billiardMatchesToDisplay = [...this.billiardMatches.filter(match => match['sameMatch'])];
+    //     this.samsclubMatchesToDisplay = [...this.samsclubMatches.filter(match => match['sameMatch'])];
+    //   } else {
+    //     this.billiardMatchesToDisplay = [...this.billiardMatches];
+    //     this.samsclubMatchesToDisplay = [...this.samsclubMatches];
+    //   }
+
+
+      
+    // } else {
+    //   if (this.isSameMatchToggleOn) {
+    //     this.isSameMatchToggleOn = false;
+    //     localStorage.setItem('isSameMatchToggleOn', 'false');
+    //     this.billiardMatchesToDisplay = [...this.billiardMatches];
+    //     this.samsclubMatchesToDisplay = [...this.samsclubMatches];
+    //   } else if (!this.isSameMatchToggleOn) {
+    //     this.isSameMatchToggleOn = true;
+    //     localStorage.setItem('isSameMatchToggleOn', 'true');
+    //     this.billiardMatchesToDisplay = [...this.billiardMatches.filter(match => match['sameMatch'])];
+    //     this.samsclubMatchesToDisplay = [...this.samsclubMatches.filter(match => match['sameMatch'])];
+    //   }
+    // }
+
     
+  }
+
+  filterArrays() {
+
+    if (this.isSameMatchToggleOn && !this.isRankedToggleOn) {
+      this.billiardMatchesToDisplay = [...this.billiardMatches.filter(match => match['sameMatch'])];
+      this.samsclubMatchesToDisplay = [...this.samsclubMatches.filter(match => match['sameMatch'])];
+    } else if (!this.isSameMatchToggleOn && this.isRankedToggleOn) {
+      this.billiardMatchesToDisplay = [...this.billiardMatches.filter(match => match['lobby_type'] === 7)];
+      this.samsclubMatchesToDisplay = [...this.samsclubMatches.filter(match => match['lobby_type'] === 7)];
+    } else if (this.isSameMatchToggleOn && this.isRankedToggleOn) {
+      this.billiardMatchesToDisplay = [...this.billiardMatches.filter(match => match['sameMatch'] && match['lobby_type'] === 7)];
+      this.samsclubMatchesToDisplay = [...this.samsclubMatches.filter(match => match['sameMatch'] && match['lobby_type'] === 7)];
+    } else {
+      this.billiardMatchesToDisplay = [...this.billiardMatches];
+      this.samsclubMatchesToDisplay = [...this.samsclubMatches];
+    }
+
   }
 
   handleScrollToBottom() {
