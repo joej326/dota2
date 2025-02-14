@@ -3,7 +3,8 @@
     background-color: lighten($color: lightblue, $amount: 7);
     padding: 10px 16px;
     font-size: 13px;
-    width: 130px;
+    width: 125px;
+    white-space: nowrap;
     height: 40px;
     margin: 15px 10px 0 10px;
     display: block;
