@@ -1,4 +1,5 @@
 @mixin button {
+    border-width: 1px;
     border-radius: 10px;
     background-color: lighten($color: lightblue, $amount: 7);
     padding: 10px 16px;
