@@ -21,6 +21,17 @@
         }
         &.match-start-time {
         }
+        &.which-game {
+            // border-top-style: solid;
+            // border-top-width: 1px;
+            margin-top: 4px;
+            font-size: 2vh;
+
+            &.mi-amigos {
+                // font-size: 1.7vh;
+
+            }
+        }
     }
 
     &.same-match {

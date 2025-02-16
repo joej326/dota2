@@ -10,7 +10,8 @@
       <p class="match-start-time">{{ match.start_time * 1000 | date: 'h:mm a' }}</p>
 
       @switch (match.match_id) {
-        @case (games.carlos_mencia) { <p>(Carlos Mencia Game)</p> }
+        @case (games.carlos_mencia) { <p class="which-game">(Carlos Mencia Game)</p> }
+        @case (games.how_I_came_up_with_it_mi_amigos) { <p class="which-game mi-amigos">And that's just how I came up with it mi amigos!</p> }
         @default {  }
       }
 
