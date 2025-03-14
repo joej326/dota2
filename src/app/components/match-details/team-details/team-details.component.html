@@ -4,10 +4,10 @@
     <p *ngFor="let player of players; let last = last;"
         class="player" 
         [ngClass]="{
-            'selected-player': player.hero_id === heroId,
-            'same-match-player': player.personaname === 'BurlyCheddar' || player.personaname === 'Gabe-O-Saurus',
+            'billiard-or-samsclub': player.account_id === 121010326 || player.account_id === 112553511,
             'abandoned': player.abandons,
             'last': last
         }">
-        <span class="hero-name">{{ player.hero_id | hero:heroes }}<span class="hero-level">{{player?.level}}</span></span>&nbsp;|&nbsp;<span *ngIf="!showKdaRatios" class="kills-deaths-assists">{{player?.kills }}/{{ player?.deaths }}/{{ player?.assists }}</span><span *ngIf="showKdaRatios" class="kda">{{player?.kda }}</span></p>
+        <span class="hero-name">{{ player.hero_id | hero:heroes }}<span class="hero-level">{{player?.level}}</span></span>&nbsp;|&nbsp;<span *ngIf="!showKdaRatios" class="kills-deaths-assists">{{player?.kills }}/{{ player?.deaths }}/{{ player?.assists }}</span><span *ngIf="showKdaRatios" class="kda">{{player?.kda }}</span>
+    </p>
 </div>

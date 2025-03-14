@@ -13,14 +13,7 @@ p {
         border-bottom: solid black 1px;
     }
 
-    &.selected-player {
-        color: blue;
-
-        .hero-level {
-            border-color: blue;
-        }
-    }
-    &.same-match-player {
+    &.billiard-or-samsclub {
         color: blue;
 
         .hero-level {
