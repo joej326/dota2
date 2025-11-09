@@ -32,7 +32,7 @@ export class ApiService {
     }
 
     getMatch(matchId: string) {
-        return this.http.get(`https://api.opendota.com/api/matches/${matchId}?api_key=${apiKey}`);
+        return this.http.get(`https://api.opendota.com/api/matches/${matchId}`);
     }
 
     getPlayerRecentMatches(dotaAccountId: number) {
