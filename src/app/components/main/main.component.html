@@ -10,6 +10,8 @@
   
     <div class="match-section">
       <p class="player-header">Billiard</p>
+      <p *ngIf="billiardMatchesToDisplay.length" class="matches-count">{{ billiardMatchesToDisplay.length }} matches</p>
+
       <app-match-containers 
         (onMatchClick$)="onMatchClick($event, 'billiard')"
         [matches]="billiardMatchesToDisplay" 
@@ -19,6 +21,7 @@
     
     <div class="match-section">
       <p class="player-header">Samsclub</p>
+      <p *ngIf="samsclubMatchesToDisplay.length" class="matches-count">{{ samsclubMatchesToDisplay.length }} matches</p>
       <app-match-containers 
         (onMatchClick$)="onMatchClick($event, 'samsclub')"
         [matches]="samsclubMatchesToDisplay" 
