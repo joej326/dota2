@@ -5,7 +5,7 @@
     <div class="data-container" [ngClass]="{'ranked': matchData.lobby_type === 7}">
         <div class="upper-container">
             <h2>{{ heroId | hero:heroes }}</h2>
-            <p class="match-start-time one">{{ matchData?.start_time * 1000 | date: 'MMM d, y' }}</p>
+            <p class="match-start-time one">{{ matchData?.start_time * 1000 | date: 'EEEE, MMMM d, yyyy' }}</p>
             <p class="match-start-time two">{{ matchData?.start_time * 1000 | date: 'h:mm a' }}</p>
             <p class="duration">Duration: {{ matchData?.duration | duration }}</p>
             <p [ngClass]="{'won': isWin, 'lost': !isWin}">
