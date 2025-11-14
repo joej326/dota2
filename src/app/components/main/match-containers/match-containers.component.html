@@ -6,7 +6,7 @@
       [id]="playerName + '-match-' + match.match_id"
     >
       <p class="hero-id">{{ match.hero_id | hero:heroes }}</p>
-      <p class="match-start-time">{{ match.start_time * 1000 | date: 'MMM d, y' }}</p>
+      <p class="match-start-time">{{ match.start_time * 1000 | date: 'E, MMM d, y' }}</p>
       <p class="match-start-time">{{ match.start_time * 1000 | date: 'h:mm a' }}</p>
 
       @if (match.match_id === 8175730351) { <p class="game-label">(Carlos Mencia Game)</p> }
