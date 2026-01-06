@@ -10,8 +10,11 @@
             <p class="duration">Duration: {{ matchData?.duration | duration }}</p>
             <p [ngClass]="{'won': isWin, 'lost': !isWin}">
                 {{ isWin === true ? 'WON' : isWin === false ? 'LOST' : '' }}</p>
-
-            <button (click)="showKdaRatios = !showKdaRatios" class="show-kda {{ showKdaRatios ? 'on' : '' }}">Show KDA Ratios</button>
+                
+            <div class="button-container">
+                <button (click)="showKdaRatios = !showKdaRatios" class="show-kda {{ showKdaRatios ? 'on' : '' }}">Show KDA Ratios</button>
+                <button (click)="showUsernames = !showUsernames" class="show-kda {{ showUsernames ? 'on' : '' }}">Show Usernames</button>
+            </div>
         </div>
             
         <div *ngIf="isLoading === false" class="other-data-container">
@@ -24,7 +27,8 @@
 
                     [team]="'radiant'" 
                     [players]="radiantPlayers"
-                    [showKdaRatios]="showKdaRatios">
+                    [showKdaRatios]="showKdaRatios"
+                    [showUsernames]="showUsernames">
                 </app-team-details>
             </div>
             
@@ -36,7 +40,8 @@
                     
                     [team]="'dire'" 
                     [players]="direPlayers"
-                    [showKdaRatios]="showKdaRatios">
+                    [showKdaRatios]="showKdaRatios"
+                    [showUsernames]="showUsernames">
                 </app-team-details>
             </div>
             

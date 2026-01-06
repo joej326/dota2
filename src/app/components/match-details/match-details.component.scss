@@ -65,20 +65,26 @@ h1, h3 {
                     }
                 }
             }
-            button {
-                @include button;
-                font-weight: 700;
+            .button-container {
+                display: flex;
                 margin-bottom: 10px;
 
-                // &:hover {
-                //     background-color: darken(lightblue, 5%);
-                // }
+                button {
+                    @include button;
+                    font-weight: 700;
+                    margin-bottom: 10px;
 
-                &.on {
-                    background-color: green;
-                    color: white;
+                    // &:hover {
+                    //     background-color: darken(lightblue, 5%);
+                    // }
+
+                    &.on {
+                        background-color: green;
+                        color: white;
+                    }
                 }
             }
+            
         }
     }
 

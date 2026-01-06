@@ -8,6 +8,6 @@
             'abandoned': player.abandons,
             'last': last
         }">
-        <span class="hero-name">{{ player.hero_id | hero:heroes }}<span class="hero-level">{{player?.level}}</span></span>&nbsp;|&nbsp;<span *ngIf="!showKdaRatios" class="kills-deaths-assists">{{player?.kills }}/{{ player?.deaths }}/{{ player?.assists }}</span><span *ngIf="showKdaRatios" class="kda">{{player?.kda }}</span>
+        <span class="hero-name">{{ showUsernames ? (player.personaname || 'Unavailable') : (player.hero_id | hero:heroes) }}<span class="hero-level">{{player?.level}}</span></span>&nbsp;|&nbsp;<span *ngIf="!showKdaRatios" class="kills-deaths-assists">{{player?.kills }}/{{ player?.deaths }}/{{ player?.assists }}</span><span *ngIf="showKdaRatios" class="kda">{{player?.kda }}</span>
     </p>
 </div>

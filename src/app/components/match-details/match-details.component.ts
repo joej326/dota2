@@ -17,6 +17,7 @@ export class MatchDetailsComponent implements OnInit, AfterViewInit {
   replayUrl: string = '';
   isWin: boolean | unknown;
   showKdaRatios: boolean;
+  showUsernames: boolean;
 
   player: string = '';
   matchAllPlayersData: any;

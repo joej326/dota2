@@ -16,4 +16,5 @@ export class TeamDetailsComponent {
   @Input() team: 'radiant' | 'dire';
   @Input() players: any;
   @Input() showKdaRatios: boolean;
+  @Input() showUsernames: boolean;
 }
