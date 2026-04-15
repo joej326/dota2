@@ -28,15 +28,27 @@ export class ApiService {
     constructor(private http: HttpClient) { }
 
     getHeroes() {
-        return this.http.get(`https://api.opendota.com/api/heroes`);
+        return this.http.get(`https://api.opendota.com/api/heroes`, 
+            {
+                headers: { 'Access-Control-Allow-Origin': 'https://ship-dota2.onrender.com'}
+            }
+        );
     }
 
     getMatch(matchId: string) {
-        return this.http.get(`https://api.opendota.com/api/matches/${matchId}`);
+        return this.http.get(`https://api.opendota.com/api/matches/${matchId}`,
+            {
+                headers: { 'Access-Control-Allow-Origin': 'https://ship-dota2.onrender.com'}
+            }
+        );
     }
 
     getPlayerRecentMatches(dotaAccountId: number) {
-        return this.http.get(`https://api.opendota.com/api/players/${dotaAccountId}/matches`);
+        return this.http.get(`https://api.opendota.com/api/players/${dotaAccountId}/matches`,
+            {
+                headers: { 'Access-Control-Allow-Origin': 'https://ship-dota2.onrender.com'}
+            }
+        );
     }
 
 
